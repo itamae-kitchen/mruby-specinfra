@@ -4,4 +4,5 @@ MRuby::Gem::Specification.new('mruby-specinfra') do |spec|
     'Gosuke Miyashita',
     'Takashi Kokubun',
   ]
+  spec.add_dependency 'mruby-onig-regexp'
 end
