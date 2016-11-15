@@ -3,7 +3,6 @@
 [Specinfra](https://github.com/mizzy/specinfra) for mruby.
 
 ## Installation
-- add conf.gem line to `build_config.rb`
 
 ```ruby
 MRuby::Build.new do |conf|
