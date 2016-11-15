@@ -1,6 +1,0 @@
-name: mruby-specinfra
-description: Specinfra class
-author: Takashi Kokubun
-website: https://github.com/k0kubun/mruby-specinfra
-protocol: git
-repository: https://github.com/k0kubun/mruby-specinfra.git
