@@ -1,27 +1,20 @@
-# mruby-specinfra   [![Build Status](https://travis-ci.org/k0kubun/mruby-specinfra.svg?branch=master)](https://travis-ci.org/k0kubun/mruby-specinfra)
-Specinfra class
-## install by mrbgems
+# mruby-specinfra [![Build Status](https://travis-ci.org/k0kubun/mruby-specinfra.svg?branch=master)](https://travis-ci.org/k0kubun/mruby-specinfra)
+
+[Specinfra](https://github.com/mizzy/specinfra) for mruby.
+
+## Installation
 - add conf.gem line to `build_config.rb`
 
 ```ruby
 MRuby::Build.new do |conf|
-
-    # ... (snip) ...
-
-    conf.gem :github => 'k0kubun/mruby-specinfra'
+  conf.gem github: 'k0kubun/mruby-specinfra'
 end
 ```
-## example
-```ruby
-p Specinfra.hi
-#=> "hi!!"
-t = Specinfra.new "hello"
-p t.hello
-#=> "hello"
-p t.bye
-#=> "hello bye"
-```
+
+## Usage
+
+See [MItamae](https://github.com/k0kubun/mitamae).
 
 ## License
-under the MIT License:
-- see LICENSE file
+
+MIT License
