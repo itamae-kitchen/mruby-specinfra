@@ -6,7 +6,7 @@
 
 ```ruby
 MRuby::Build.new do |conf|
-  conf.gem github: 'k0kubun/mruby-specinfra'
+  conf.gem mgem: 'mruby-specinfra'
 end
 ```
 
