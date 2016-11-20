@@ -3,13 +3,7 @@ module Specinfra
     class Exec < Base
       def run_command(cmd, opts={})
         stdout, stderr, status = Open3.capture3(@config[:shell], '-c', cmd)
-
-        if @example
-          @example.metadata[:command] = cmd
-          @example.metadata[:stdout]  = stdout
-        end
-
-        CommandResult.new :stdout => stdout, :stderr => stderr, :exit_status => status
+        CommandResult.new(stdout: stdout, stderr: stderr, exit_status: status.exitstatus)
       end
 
       def send_file(from, to)
