@@ -37,7 +37,8 @@ module Specinfra
         begin
           inventory_class = Specinfra::HostInventory.const_get(StringUtils.to_camel_case(key.to_s))
           @inventory[key.to_sym] = inventory_class.new(self).get
-        rescue
+        rescue => e
+          p e
           @inventory[key.to_sym] = nil
         end
       end
