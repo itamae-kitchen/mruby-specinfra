@@ -9,8 +9,7 @@ class Specinfra::Command::Freebsd::V8::Package < Specinfra::Command::Freebsd::Ba
     def shell_check_pkgng
       # See manpage of pkg(8), the paragraph devoted to -N flag
       # https://www.freebsd.org/cgi/man.cgi?query=pkg
-      'TMPDIR=/dev/null ASSUME_ALWAYS_YES=1 PACKAGESITE=file:///nonexist ' \
-      'pkg info -x \'pkg(-devel)?$\' > /dev/null 2>&1'
+      'TMPDIR=/dev/null ASSUME_ALWAYS_YES=1 PACKAGESITE=file:///nonexist pkg info -x \'pkg(-devel)?$\' > /dev/null 2>&1'
     end
 
     def shell_ifelse(cond, stmt_t, stmt_f)
