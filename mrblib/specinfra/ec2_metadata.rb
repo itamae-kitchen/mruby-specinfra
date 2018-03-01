@@ -25,6 +25,9 @@ module Specinfra
       #   end
       # end
 
+      if key.is_a?(Symbol)
+        key = key.to_s
+      end
       @metadata[key]
     end
 
