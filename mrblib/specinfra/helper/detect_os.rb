@@ -19,6 +19,7 @@ module Specinfra
           Redhat,
           Solaris,
           Suse,
+          Termux,
         ]
       end
 
