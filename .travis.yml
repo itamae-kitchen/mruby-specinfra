@@ -12,4 +12,4 @@ before_script:
   - cd mruby
   - cp -fp ../mruby-specinfra/.travis_build_config.rb build_config.rb
 script:
-  - make all test
+  - make all
