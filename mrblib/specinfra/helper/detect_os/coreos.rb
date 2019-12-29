@@ -9,7 +9,7 @@ module Specinfra
             lsb_release = run_command("cat /etc/lsb-release")
             if lsb_release.success?
               lsb_release.stdout.each_line do |line|
-                distro  = line.split('=').last.strip if line =~ /^DISTRIB_ID=/
+                distro  = 'coreos' if line.include? 'CoreOS'
                 release = line.split('=').last.strip if line =~ /^DISTRIB_RELEASE=/
               end
             end
