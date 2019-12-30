@@ -82,6 +82,9 @@ class MRubySpecinfraBuilder
     # No `defined?` in mruby.
     src.gsub!(/ defined\?\(([^)]+)\)/, ' Object.const_defined?("\1")')
 
+    # `LoadError` doesn't exist in mruby. Because we suppress `require`, everything could happen.
+    src.gsub!(/^( *)rescue LoadError/, "\\1  raise 'mruby-specinfra does not support dynamic require'\n\\1rescue StandardError")
+
     case path
     when '/specinfra.rb'
       # 'include' is not defined. Besides we don't need the top-level require feature.

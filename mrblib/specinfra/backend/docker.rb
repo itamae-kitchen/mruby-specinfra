@@ -6,7 +6,8 @@ module Specinfra
 
         begin
 #           require 'docker' unless Object.const_defined?("::Docker")
-        rescue LoadError
+          raise 'mruby-specinfra does not support dynamic require'
+        rescue StandardError
           fail "Docker client library is not available. Try installing `docker-api' gem."
         end
 

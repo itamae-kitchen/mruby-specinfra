@@ -4,7 +4,8 @@ module Specinfra
       def get
         begin
 #           require 'json'
-        rescue LoadError
+          raise 'mruby-specinfra does not support dynamic require'
+        rescue StandardError
           return nil
         end
 

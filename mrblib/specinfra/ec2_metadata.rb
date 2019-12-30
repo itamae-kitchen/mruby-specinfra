@@ -19,7 +19,8 @@ module Specinfra
 #           require "specinfra/ec2_metadata/#{key}"
           inventory_class = Specinfra::Ec2Metadata.const_get(key.to_s.to_camel_case)
           @metadata[key] = inventory_class.new(@host_inventory).get
-        rescue LoadError
+          raise 'mruby-specinfra does not support dynamic require'
+        rescue StandardError
           @metadata[key] = nil
         end
       end

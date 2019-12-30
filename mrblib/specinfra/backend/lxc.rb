@@ -6,7 +6,8 @@ module Specinfra
 
         begin
 #           require 'lxc/extra' unless Object.const_defined?("::LXC::Extra")
-        rescue LoadError
+          raise 'mruby-specinfra does not support dynamic require'
+        rescue StandardError
           fail "LXC client library is not available. Try installing `lxc-extra' gem"
         end
       end
