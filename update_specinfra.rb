@@ -5,7 +5,7 @@ require 'shellwords'
 require 'tmpdir'
 
 SPECINFRA_REPO    = 'mizzy/specinfra'
-SPECINFRA_VERSION = 'v2.82.4'
+SPECINFRA_VERSION = 'v2.82.5'
 
 module GitHubFetcher
   def self.fetch(repo, tag:, path:)
@@ -100,9 +100,6 @@ class MRubySpecinfraBuilder
         "\n" +
         "\\1def __unused_original_spawn_method(cmd)"
       )
-    when '/specinfra/command/ubuntu/v18/port.rb'
-      # `::Base` seems to be a mistake? This constant lookup doesn't work in mruby.
-      src.gsub!(/ Specinfra::Command::Ubuntu::Base::V18::Port /, ' Specinfra::Command::Ubuntu::V18::Port ')
     when '/specinfra/ext/class.rb'
       # Special code generation for missing ObjectSpace
       src.replace(generate_class_ext)
