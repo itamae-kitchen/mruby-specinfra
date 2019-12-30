@@ -5,8 +5,11 @@ MRuby::Gem::Specification.new('mruby-specinfra') do |spec|
     'Takashi Kokubun',
   ]
   spec.add_dependency 'mruby-array-ext'
+  spec.add_dependency 'mruby-class-ext'
+  spec.add_dependency 'mruby-env'
   spec.add_dependency 'mruby-metaprog'
   spec.add_dependency 'mruby-onig-regexp'
   spec.add_dependency 'mruby-open3'
   spec.add_dependency 'mruby-shellwords'
+  spec.add_dependency 'mruby-singleton'
 end
