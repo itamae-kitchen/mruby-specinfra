@@ -5,7 +5,7 @@ module Specinfra
         super
 
         begin
-          require 'lxc/extra' unless defined?(::LXC::Extra)
+#           require 'lxc/extra' unless Object.const_defined?("::LXC::Extra")
         rescue LoadError
           fail "LXC client library is not available. Try installing `lxc-extra' gem"
         end

@@ -1,0 +1,81 @@
+class Class
+  def subclasses
+    case self.to_s
+    when "Specinfra::Command::Base"
+      [
+        Specinfra::Command::Base::Bond,
+        Specinfra::Command::Base::Bridge,
+        Specinfra::Command::Base::Cron,
+        Specinfra::Command::Base::File,
+        Specinfra::Command::Base::Fstab,
+        Specinfra::Command::Base::Group,
+        Specinfra::Command::Base::Host,
+        Specinfra::Command::Base::Interface,
+        Specinfra::Command::Base::Inventory,
+        Specinfra::Command::Base::Ip6tables,
+        Specinfra::Command::Base::Ipfilter,
+        Specinfra::Command::Base::Ipnat,
+        Specinfra::Command::Base::Iptables,
+        Specinfra::Command::Base::KernelModule,
+        Specinfra::Command::Base::KvmGuest,
+        Specinfra::Command::Base::Localhost,
+        Specinfra::Command::Base::LxcContainer,
+        Specinfra::Command::Base::MailAlias,
+        Specinfra::Command::Base::Package,
+        Specinfra::Command::Base::Port,
+        Specinfra::Command::Base::Ppa,
+        Specinfra::Command::Base::Process,
+        Specinfra::Command::Base::RoutingTable,
+        Specinfra::Command::Base::Selinux,
+        Specinfra::Command::Base::SelinuxModule,
+        Specinfra::Command::Base::Service,
+        Specinfra::Command::Base::User,
+        Specinfra::Command::Base::Yumrepo,
+        Specinfra::Command::Base::Zfs,
+      ]
+    when "Specinfra::Command::Windows::Base"
+      [
+        Specinfra::Command::Windows::Base::Feature,
+        Specinfra::Command::Windows::Base::File,
+        Specinfra::Command::Windows::Base::Firewall,
+        Specinfra::Command::Windows::Base::Group,
+        Specinfra::Command::Windows::Base::Host,
+        Specinfra::Command::Windows::Base::HotFix,
+        Specinfra::Command::Windows::Base::IisAppPool,
+        Specinfra::Command::Windows::Base::IisWebsite,
+        Specinfra::Command::Windows::Base::Package,
+        Specinfra::Command::Windows::Base::Port,
+        Specinfra::Command::Windows::Base::Process,
+        Specinfra::Command::Windows::Base::RegistryKey,
+        Specinfra::Command::Windows::Base::ScheduledTask,
+        Specinfra::Command::Windows::Base::Service,
+        Specinfra::Command::Windows::Base::User,
+      ]
+    when "Specinfra::Helper::DetectOs"
+      [
+        Specinfra::Helper::DetectOs::Aix,
+        Specinfra::Helper::DetectOs::Alpine,
+        Specinfra::Helper::DetectOs::Arch,
+        Specinfra::Helper::DetectOs::Clearlinux,
+        Specinfra::Helper::DetectOs::Coreos,
+        Specinfra::Helper::DetectOs::Darwin,
+        Specinfra::Helper::DetectOs::Debian,
+        Specinfra::Helper::DetectOs::Devuan,
+        Specinfra::Helper::DetectOs::Eos,
+        Specinfra::Helper::DetectOs::Esxi,
+        Specinfra::Helper::DetectOs::Freebsd,
+        Specinfra::Helper::DetectOs::Gentoo,
+        Specinfra::Helper::DetectOs::Nixos,
+        Specinfra::Helper::DetectOs::Openbsd,
+        Specinfra::Helper::DetectOs::Photon,
+        Specinfra::Helper::DetectOs::Plamo,
+        Specinfra::Helper::DetectOs::Poky,
+        Specinfra::Helper::DetectOs::Redhat,
+        Specinfra::Helper::DetectOs::Solaris,
+        Specinfra::Helper::DetectOs::Suse,
+      ]
+    else
+      raise "#{self} is not supposed by mruby-specinfra Class#subclasses"
+    end
+  end
+end

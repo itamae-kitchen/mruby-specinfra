@@ -4,7 +4,7 @@ module Specinfra
       def get
         res = {}
         ## docker
-        if backend.run_command('ls /.dockerinit').success?
+        if backend.run_command('grep -Eqa \'docker(/|-[0-9a-f]+)\' /proc/1/cgroup||test -e /.dockerinit').success?
           res[:system] = 'docker'
           return res
         end
@@ -17,7 +17,7 @@ module Specinfra
 
         cmd = backend.command.get(:get_inventory_system_product_name)
         ret = backend.run_command(cmd)
-        if ret.exit_status == 0
+        if ret.exit_status == 0 and ret.stdout.length > 0
            res[:system] = parse_system_product_name(ret.stdout)
            return res
         end
@@ -50,7 +50,7 @@ module Specinfra
         detected = ret.strip
 
         case detected
-        when 'vmware', 'kvm'
+        when 'vmware', 'kvm', 'qemu'
           detected
         when 'oracle'
           'vbox'

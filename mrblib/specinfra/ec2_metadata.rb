@@ -14,20 +14,16 @@ module Specinfra
     end
 
     def [](key)
-      # Dynamic plugin support is disabled in mruby-specinfra
-      # if @metadata[key].nil?
-      #   begin
-      #     require "specinfra/ec2_metadata/#{key}"
-      #     inventory_class = Specinfra::Ec2Metadata.const_get(key.to_s.to_camel_case)
-      #     @metadata[key] = inventory_class.new(@host_inventory).get
-      #   rescue LoadError
-      #     @metadata[key] = nil
-      #   end
-      # end
-
-      if key.is_a?(Symbol)
-        key = key.to_s
+      if @metadata[key].nil?
+        begin
+#           require "specinfra/ec2_metadata/#{key}"
+          inventory_class = Specinfra::Ec2Metadata.const_get(key.to_s.to_camel_case)
+          @metadata[key] = inventory_class.new(@host_inventory).get
+        rescue LoadError
+          @metadata[key] = nil
+        end
       end
+
       @metadata[key]
     end
 

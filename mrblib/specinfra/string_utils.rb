@@ -1,15 +1,14 @@
-# Original:
-#   https://github.com/mizzy/specinfra/blob/v2.60.2/lib/specinfra/ext/string.rb
-module Specinfra
-  module StringUtils
-    UNDERSCORE_REGEXP = /_/
-    CAMEL_CASE_REGEXP = /[A-Z]+.*/
+class String
+  def to_snake_case
+    self.gsub(/::/, '/').
+    gsub(/([A-Z]+)([A-Z][a-z])/,'\1_\2').
+    gsub(/([a-z\d])([A-Z])/,'\1_\2').
+    tr("-", "_").
+    downcase
+  end
 
-    class << self
-      def to_camel_case(str)
-        return str if str !~ UNDERSCORE_REGEXP && str =~ CAMEL_CASE_REGEXP
-        str.split('_').map { |e| e.capitalize }.join
-      end
-    end
+  def to_camel_case
+    return self if self !~ /_/ && self =~ /[A-Z]+.*/
+    split('_').map{|e| e.capitalize}.join
   end
 end

@@ -15,6 +15,9 @@ module Specinfra
       block_device
       user
       group
+      facter
+      ohai
+      mount
     }
 
     include Enumerable
@@ -35,7 +38,7 @@ module Specinfra
       @inventory[key.to_sym] ||= {}
       if @inventory[key.to_sym].empty?
         begin
-          inventory_class = Specinfra::HostInventory.const_get(StringUtils.to_camel_case(key.to_s))
+          inventory_class = Specinfra::HostInventory.const_get(key.to_s.to_camel_case)
           @inventory[key.to_sym] = inventory_class.new(self).get
         rescue
           @inventory[key.to_sym] = nil
@@ -61,5 +64,11 @@ module Specinfra
         yield self[k]
       end
     end
+
   end
+end
+
+# require "specinfra/host_inventory/base"
+Specinfra::HostInventory::KEYS.each do |k|
+#   require "specinfra/host_inventory/#{k}"
 end

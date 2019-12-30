@@ -1,11 +1,12 @@
 module Specinfra
   class CommandResult
-    attr_reader :exit_status
+    attr_reader :stdout, :stderr, :exit_status, :exit_signal
 
     def initialize(args = {})
-      @stdout_buf = args[:stdout] || ''
-      @stderr_buf = args[:stderr] || ''
+      @stdout = args[:stdout] || ''
+      @stderr = args[:stderr] || ''
       @exit_status = args[:exit_status] || 0
+      @exit_signal = args[:exit_signal]
     end
 
     def success?
@@ -16,14 +17,12 @@ module Specinfra
       @exit_status != 0
     end
 
-    # Calling methods like `strip` directly to stdout buffer leads SIGPIPE.
-    # Maybe we should handle this in open3. But for now, lazily do `dup` for performance.
-    def stdout
-      @stdout ||= @stdout_buf.dup
-    end
-
-    def stderr
-      @stderr ||= @stderr_buf.dup
+    def [](x)
+      warn "CommandResult#[] is obsolete. Use accessors instead. in #{caller[0]}"
+      case x
+      when :stdout, :stderr, :exit_status, :exit_signal
+        self.send(x)
+      end
     end
   end
 end
