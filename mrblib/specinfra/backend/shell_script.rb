@@ -1,3 +1,5 @@
+# require 'singleton'
+
 module Specinfra
   module Backend
     class ShellScript < Base

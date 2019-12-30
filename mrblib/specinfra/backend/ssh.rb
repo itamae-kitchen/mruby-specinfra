@@ -1,3 +1,8 @@
+# -*- coding: utf-8 -*-
+# require 'specinfra/backend/exec'
+# require 'net/ssh'
+# require 'net/scp'
+
 module Specinfra
   module Backend
     class Ssh < Exec

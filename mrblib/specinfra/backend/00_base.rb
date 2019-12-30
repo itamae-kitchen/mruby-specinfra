@@ -1,3 +1,6 @@
+# require 'singleton'
+# require 'specinfra/command_result'
+
 module Specinfra
   module Backend
     class Base
@@ -11,10 +14,11 @@ module Specinfra
 
       def initialize(config = {})
         @config = config
+        @example = nil
       end
 
       def get_config(key)
-        @config[key] # || Specinfra.configuration.send(key)
+        @config[key] || Specinfra.configuration.send(key)
       end
 
       def set_config(key, value)
@@ -23,13 +27,15 @@ module Specinfra
 
       def os_info
         return @os_info if @os_info
-        Specinfra::Helper::DetectOs.all.each do |klass|
+
+        Specinfra::Helper::DetectOs.subclasses.each do |klass|
           if @os_info = klass.new(self).detect
-            @os_info[:arch] ||= run_command('uname -m').stdout.strip
+            @os_info[:arch] ||= self.run_command('uname -m').stdout.strip
             return @os_info
           end
         end
-        raise 'Failed to detect OS!'
+
+        raise NotImplementedError, 'OS detection failed.'
       end
 
       def command

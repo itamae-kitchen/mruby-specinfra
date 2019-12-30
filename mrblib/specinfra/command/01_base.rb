@@ -1,3 +1,4 @@
+# require 'shellwords'
 class Specinfra::Command::Base
   class << self
     class NotImplementedError < Exception; end

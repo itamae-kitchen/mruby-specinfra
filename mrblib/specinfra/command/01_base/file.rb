@@ -66,7 +66,7 @@ class Specinfra::Command::Base::File < Specinfra::Command::Base
     end
 
     def check_contains_lines(file, expected_lines, from=nil, to=nil)
-      require 'digest/md5'
+#       require 'digest/md5'
       from ||= '1'
       to ||= '$'
       sed = "sed -n #{escape(from)},#{escape(to)}p #{escape(file)}"
@@ -147,18 +147,18 @@ class Specinfra::Command::Base::File < Specinfra::Command::Base
 
     def change_mode(file, mode, options = {})
       option = '-R' if options[:recursive]
-      "chmod #{option} #{mode} #{escape(file)}"#.squeeze(' ')
+      "chmod #{option} #{mode} #{escape(file)}".squeeze(' ')
     end
 
     def change_owner(file, owner, group=nil, options = {})
       option = '-R' if options[:recursive]
-      owner = "#{owner}:#{escape(group)}" if group
-      "chown #{option} #{owner} #{escape(file)}"#.squeeze(' ')
+      owner = "#{owner}:#{group}" if group
+      "chown #{option} #{escape(owner)} #{escape(file)}".squeeze(' ')
     end
 
     def change_group(file, group, options = {})
       option = '-R' if options[:recursive]
-      "chgrp #{option} #{escape(group)} #{escape(file)}"#.squeeze(' ')
+      "chgrp #{option} #{escape(group)} #{escape(file)}".squeeze(' ')
     end
 
     def create_as_directory(file)

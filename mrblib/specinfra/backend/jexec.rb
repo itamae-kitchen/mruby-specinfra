@@ -1,17 +1,22 @@
 module Specinfra
   module Backend
-    class Exec < Base
-      def run_command(cmd, opts={})
-        stdout, stderr, status = Open3.capture3(@config[:shell], '-c', cmd)
-        CommandResult.new(stdout: stdout, stderr: stderr, exit_status: status.exitstatus)
+    class Jexec < Exec
+      def initialize(config = {})
+        super(config)
+        jname = get_config(:jail_name)
+        jroot = `jls -j #{jname} path`.strip
+        fail 'fail to get jail path!' if jroot.to_s.empty?
+        set_config(:jail_root, jroot)
       end
 
       def send_file(from, to)
-        FileUtils.cp(from, to)
+        jroot = get_config(:jail_root)
+        FileUtils.cp(from, "#{jroot}/#{to}")
       end
 
       def send_directory(from, to)
-        FileUtils.cp_r(from, to)
+        jroot = get_config(:jail_root)
+        FileUtils.cp_r(from, "#{jroot}/#{to}")
       end
 
       def build_command(cmd)
@@ -34,7 +39,8 @@ module Specinfra
           cmd = %Q{env PATH="#{path}" #{cmd}}
         end
 
-        cmd
+        jname = get_config(:jail_name)
+        "jexec #{jname} #{cmd}"
       end
     end
   end

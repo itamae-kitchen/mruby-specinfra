@@ -1,3 +1,7 @@
+# -*- coding: utf-8 -*-
+# require 'specinfra/backend/exec'
+# require 'net/telnet'
+
 module Specinfra
   module Backend
     class Telnet < Exec
