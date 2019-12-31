@@ -87,7 +87,7 @@ class MRubySpecinfraBuilder
 
     case path
     when '/specinfra.rb'
-      # 'include' is not defined. Besides we don't need the top-level require feature.
+      # 'include' is not defined. Besides we don't need the top-level include feature.
       src.gsub!(/^include .+$/, '# \0')
     when '/specinfra/backend/exec.rb'
       # Specinfra::Backend::Exec#spawn_command uses Thread. mruby-thread had issues and we're just using mruby-open3 instead.
