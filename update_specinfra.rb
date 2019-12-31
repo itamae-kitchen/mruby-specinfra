@@ -47,7 +47,6 @@ class MRubySpecinfraBuilder
     %r[\A/specinfra/command/ubuntu\.rb\z]     => '/specinfra/command/04_ubuntu.rb',
     %r[\A/specinfra/command/ubuntu/]          => '/specinfra/command/04_ubuntu/',
     %r[\A/specinfra/core\.rb\z]               => '/00_specinfra/core.rb',
-    %r[\A/specinfra/ext/string\.rb\z]         => '/specinfra/string_utils.rb',
   }
 
   def initialize(lib:, mrblib:)
