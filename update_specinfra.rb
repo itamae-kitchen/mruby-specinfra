@@ -23,18 +23,18 @@ end
 class MRubySpecinfraBuilder
   # Upper rules match first.
   RENAME_RULES = {
-    %r[\A/specinfra/backend/base\.rb\z]        => '/specinfra/backend/00_base.rb',
-    %r[\A/specinfra/backend/exec\.rb\z]        => '/specinfra/backend/01_exec.rb',
-    %r[\A/specinfra/backend/powershell/]       => '/specinfra/backend/02_powershell/',
-    %r[\A/specinfra/command/module(/|\.rb\z)]  => '/specinfra/command/00_module\1',
-    %r[\A/specinfra/command/base(/|\.rb\z)]    => '/specinfra/command/01_base\1',
-    %r[\A/specinfra/command/linux(/|\.rb\z)]   => '/specinfra/command/02_linux\1',
-    %r[\A/specinfra/command/solaris(/|\.rb\z)] => '/specinfra/command/02_solaris\1',
-    %r[\A/specinfra/command/debian(/|\.rb\z)]  => '/specinfra/command/03_debian\1',
-    %r[\A/specinfra/command/redhat(/|\.rb\z)]  => '/specinfra/command/03_redhat\1',
-    %r[\A/specinfra/command/suse(/|\.rb\z)]    => '/specinfra/command/03_suse\1',
-    %r[\A/specinfra/command/fedora(/|\.rb\z)]  => '/specinfra/command/04_fedora\1',
-    %r[\A/specinfra/command/ubuntu(/|\.rb\z)]  => '/specinfra/command/04_ubuntu\1',
+    %r[\A/specinfra/backend/base\.rb\z]        => '/specinfra/backend/0_base.rb',     # seen by specinfra/backend/exec.rb
+    %r[\A/specinfra/backend/exec\.rb\z]        => '/specinfra/backend/1_exec.rb',     # seen by specinfra/backend/powershell.rb
+    %r[\A/specinfra/backend/powershell/]       => '/specinfra/backend/2_powershell/', # seen by specinfra/backend/cmd.rb
+    %r[\A/specinfra/command/module(/|\.rb\z)]  => '/specinfra/command/0_module\1',    # seen by specinfra/command/base/service.rb
+    %r[\A/specinfra/command/base(/|\.rb\z)]    => '/specinfra/command/1_base\1',      # seen by specinfra/command/linux/base.rb, specinfra/command/solaris/base.rb
+    %r[\A/specinfra/command/solaris(/|\.rb\z)] => '/specinfra/command/2_solaris\1',   # seen by specinfra/command/smartos/base.rb
+    %r[\A/specinfra/command/linux(/|\.rb\z)]   => '/specinfra/command/2_linux\1',     # seen by specinfra/command/debian/base.rb, specinfra/command/redhat/base.rb, specinfra/command/suse/base.rb, ...
+    %r[\A/specinfra/command/suse(/|\.rb\z)]    => '/specinfra/command/3_suse\1',      # seen by specinfra/command/opensuse/base.rb
+    %r[\A/specinfra/command/debian(/|\.rb\z)]  => '/specinfra/command/3_debian\1',    # seen by specinfra/command/ubuntu/base.rb
+    %r[\A/specinfra/command/redhat(/|\.rb\z)]  => '/specinfra/command/3_redhat\1',    # seen by specinfra/command/fedora/base.rb
+    %r[\A/specinfra/command/ubuntu(/|\.rb\z)]  => '/specinfra/command/4_ubuntu\1',    # seen by specinfra/command/elementary/base.rb
+    %r[\A/specinfra/command/fedora(/|\.rb\z)]  => '/specinfra/command/4_fedora\1',    # seen by specinfra/command/eos/base.rb
   }
 
   def initialize(lib:, mrblib:)
