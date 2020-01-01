@@ -26,7 +26,6 @@ class MRubySpecinfraBuilder
     %r[\A/specinfra/backend/base\.rb\z]       => '/specinfra/backend/00_base.rb',
     %r[\A/specinfra/backend/exec\.rb\z]       => '/specinfra/backend/01_exec.rb',
     %r[\A/specinfra/backend/powershell/]      => '/specinfra/backend/02_powershell/',
-    %r[\A/specinfra/command.rb\z]             => '/specinfra/00_command.rb',
     %r[\A/specinfra/command/module\.rb\z]     => '/specinfra/command/00_module.rb',
     %r[\A/specinfra/command/module/]          => '/specinfra/command/00_module/',
     %r[\A/specinfra/command/base\.rb\z]       => '/specinfra/command/01_base.rb',
