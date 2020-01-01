@@ -23,31 +23,18 @@ end
 class MRubySpecinfraBuilder
   # Upper rules match first.
   RENAME_RULES = {
-    %r[\A/specinfra/backend/base\.rb\z]       => '/specinfra/backend/00_base.rb',
-    %r[\A/specinfra/backend/exec\.rb\z]       => '/specinfra/backend/01_exec.rb',
-    %r[\A/specinfra/backend/powershell/]      => '/specinfra/backend/02_powershell/',
-    %r[\A/specinfra/command.rb\z]             => '/specinfra/00_command.rb',
-    %r[\A/specinfra/command/module\.rb\z]     => '/specinfra/command/00_module.rb',
-    %r[\A/specinfra/command/module/]          => '/specinfra/command/00_module/',
-    %r[\A/specinfra/command/base\.rb\z]       => '/specinfra/command/01_base.rb',
-    %r[\A/specinfra/command/base/]            => '/specinfra/command/01_base/',
-    %r[\A/specinfra/command/linux\.rb\z]      => '/specinfra/command/02_linux.rb',
-    %r[\A/specinfra/command/linux/base\.rb\z] => '/specinfra/command/02_linux/00_base.rb',
-    %r[\A/specinfra/command/linux/]           => '/specinfra/command/02_linux/',
-    %r[\A/specinfra/command/solaris\.rb\z]    => '/specinfra/command/02_solaris.rb',
-    %r[\A/specinfra/command/solaris/]         => '/specinfra/command/02_solaris/',
-    %r[\A/specinfra/command/debian\.rb\z]     => '/specinfra/command/03_debian.rb',
-    %r[\A/specinfra/command/debian/]          => '/specinfra/command/03_debian/',
-    %r[\A/specinfra/command/redhat\.rb\z]     => '/specinfra/command/03_redhat.rb',
-    %r[\A/specinfra/command/redhat/]          => '/specinfra/command/03_redhat/',
-    %r[\A/specinfra/command/suse\.rb\z]       => '/specinfra/command/03_suse.rb',
-    %r[\A/specinfra/command/suse/]            => '/specinfra/command/03_suse/',
-    %r[\A/specinfra/command/fedora\.rb\z]     => '/specinfra/command/04_fedora.rb',
-    %r[\A/specinfra/command/fedora/]          => '/specinfra/command/04_fedora/',
-    %r[\A/specinfra/command/ubuntu\.rb\z]     => '/specinfra/command/04_ubuntu.rb',
-    %r[\A/specinfra/command/ubuntu/]          => '/specinfra/command/04_ubuntu/',
-    %r[\A/specinfra/core\.rb\z]               => '/00_specinfra/core.rb',
-    %r[\A/specinfra/ext/string\.rb\z]         => '/specinfra/string_utils.rb',
+    %r[\A/specinfra/backend/base\.rb\z]        => '/specinfra/backend/0_base.rb',     # seen by specinfra/backend/exec.rb
+    %r[\A/specinfra/backend/exec\.rb\z]        => '/specinfra/backend/1_exec.rb',     # seen by specinfra/backend/powershell.rb
+    %r[\A/specinfra/backend/powershell/]       => '/specinfra/backend/2_powershell/', # seen by specinfra/backend/cmd.rb
+    %r[\A/specinfra/command/module(/|\.rb\z)]  => '/specinfra/command/0_module\1',    # seen by specinfra/command/base/service.rb
+    %r[\A/specinfra/command/base(/|\.rb\z)]    => '/specinfra/command/1_base\1',      # seen by specinfra/command/linux/base.rb, specinfra/command/solaris/base.rb
+    %r[\A/specinfra/command/solaris(/|\.rb\z)] => '/specinfra/command/2_solaris\1',   # seen by specinfra/command/smartos/base.rb
+    %r[\A/specinfra/command/linux(/|\.rb\z)]   => '/specinfra/command/2_linux\1',     # seen by specinfra/command/debian/base.rb, specinfra/command/redhat/base.rb, specinfra/command/suse/base.rb, ...
+    %r[\A/specinfra/command/suse(/|\.rb\z)]    => '/specinfra/command/3_suse\1',      # seen by specinfra/command/opensuse/base.rb
+    %r[\A/specinfra/command/debian(/|\.rb\z)]  => '/specinfra/command/3_debian\1',    # seen by specinfra/command/ubuntu/base.rb
+    %r[\A/specinfra/command/redhat(/|\.rb\z)]  => '/specinfra/command/3_redhat\1',    # seen by specinfra/command/fedora/base.rb
+    %r[\A/specinfra/command/ubuntu(/|\.rb\z)]  => '/specinfra/command/4_ubuntu\1',    # seen by specinfra/command/elementary/base.rb
+    %r[\A/specinfra/command/fedora(/|\.rb\z)]  => '/specinfra/command/4_fedora\1',    # seen by specinfra/command/eos/base.rb
   }
 
   def initialize(lib:, mrblib:)
@@ -87,7 +74,7 @@ class MRubySpecinfraBuilder
 
     case path
     when '/specinfra.rb'
-      # 'include' is not defined. Besides we don't need the top-level require feature.
+      # 'include' is not defined. Besides we don't need the top-level include feature.
       src.gsub!(/^include .+$/, '# \0')
     when '/specinfra/backend/exec.rb'
       # Specinfra::Backend::Exec#spawn_command uses Thread. mruby-thread had issues and we're just using mruby-open3 instead.
