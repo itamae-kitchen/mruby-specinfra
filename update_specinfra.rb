@@ -5,7 +5,7 @@ require 'shellwords'
 require 'tmpdir'
 
 SPECINFRA_REPO    = 'mizzy/specinfra'
-SPECINFRA_VERSION = 'v2.82.5'
+SPECINFRA_VERSION = 'v2.82.7'
 
 module GitHubFetcher
   def self.fetch(repo, tag:, path:)
@@ -99,7 +99,7 @@ class MRubySpecinfraBuilder
     end
 
     subclasses = {}
-    classes.each do |klass|
+    classes.sort.each do |klass|
       subclasses[klass] = `find #{@lib.shellescape} -type f -exec grep "#{klass}" {} \\;`
         .scan(/#{klass}::[^:\n ]+/).sort.uniq
     end
