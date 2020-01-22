@@ -12,8 +12,15 @@ end
 
 ## Usage
 
-See [MItamae](https://github.com/itamae-kitchen/mitamae).
+See [mitamae](https://github.com/itamae-kitchen/mitamae).
+
+## Contributing
+
+mruby-specinfra copies changes from upstream [mizzy/specinfra](https://github.com/mizzy/specinfra)
+using [update\_specinfra.rb](./update_specinfra.rb).
+
+Please submit patches to the upstream first when you need it in mruby-specinfra.
 
 ## License
 
-MIT License
+[MIT License](./LICENSE)
