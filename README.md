@@ -19,7 +19,7 @@ See [mitamae](https://github.com/itamae-kitchen/mitamae).
 mruby-specinfra copies changes from upstream [mizzy/specinfra](https://github.com/mizzy/specinfra)
 using [update\_specinfra.rb](./update_specinfra.rb).
 
-Please submit patches to the upstream first when you need it in mruby-specinfra.
+Please submit a patch to the upstream first when you need it in mruby-specinfra.
 
 ## License
 
