@@ -6,7 +6,7 @@ end
 assert('Specinfra host_inventory ec2') do
   backend = Specinfra::Backend::Exec.new(shell: '/bin/sh')
   assert_nil backend.host_inventory["ec2"]["instance-type"]
-  assert_nil backend.host_inventory[ec2][:"instance-type"]
+  assert_nil backend.host_inventory[:ec2][:"instance-type"]
 end
 
 assert('Specinfra get_command') do
