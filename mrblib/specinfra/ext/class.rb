@@ -1,29 +1,6 @@
 class Class
   def subclasses
     case self.to_s
-    when "Specinfra::Helper::DetectOs"
-      [
-        Specinfra::Helper::DetectOs::Aix,
-        Specinfra::Helper::DetectOs::Alpine,
-        Specinfra::Helper::DetectOs::Arch,
-        Specinfra::Helper::DetectOs::Clearlinux,
-        Specinfra::Helper::DetectOs::Coreos,
-        Specinfra::Helper::DetectOs::Darwin,
-        Specinfra::Helper::DetectOs::Debian,
-        Specinfra::Helper::DetectOs::Devuan,
-        Specinfra::Helper::DetectOs::Eos,
-        Specinfra::Helper::DetectOs::Esxi,
-        Specinfra::Helper::DetectOs::Freebsd,
-        Specinfra::Helper::DetectOs::Gentoo,
-        Specinfra::Helper::DetectOs::Nixos,
-        Specinfra::Helper::DetectOs::Openbsd,
-        Specinfra::Helper::DetectOs::Photon,
-        Specinfra::Helper::DetectOs::Plamo,
-        Specinfra::Helper::DetectOs::Poky,
-        Specinfra::Helper::DetectOs::Redhat,
-        Specinfra::Helper::DetectOs::Solaris,
-        Specinfra::Helper::DetectOs::Suse,
-      ]
     when "Specinfra::Command::Base"
       [
         Specinfra::Command::Base::Bond,
@@ -73,6 +50,29 @@ class Class
         Specinfra::Command::Windows::Base::ScheduledTask,
         Specinfra::Command::Windows::Base::Service,
         Specinfra::Command::Windows::Base::User,
+      ]
+    when "Specinfra::Helper::DetectOs"
+      [
+        Specinfra::Helper::DetectOs::Aix,
+        Specinfra::Helper::DetectOs::Alpine,
+        Specinfra::Helper::DetectOs::Arch,
+        Specinfra::Helper::DetectOs::Clearlinux,
+        Specinfra::Helper::DetectOs::Coreos,
+        Specinfra::Helper::DetectOs::Darwin,
+        Specinfra::Helper::DetectOs::Debian,
+        Specinfra::Helper::DetectOs::Devuan,
+        Specinfra::Helper::DetectOs::Eos,
+        Specinfra::Helper::DetectOs::Esxi,
+        Specinfra::Helper::DetectOs::Freebsd,
+        Specinfra::Helper::DetectOs::Gentoo,
+        Specinfra::Helper::DetectOs::Nixos,
+        Specinfra::Helper::DetectOs::Openbsd,
+        Specinfra::Helper::DetectOs::Photon,
+        Specinfra::Helper::DetectOs::Plamo,
+        Specinfra::Helper::DetectOs::Poky,
+        Specinfra::Helper::DetectOs::Redhat,
+        Specinfra::Helper::DetectOs::Solaris,
+        Specinfra::Helper::DetectOs::Suse,
       ]
     else
       raise "#{self} is not supposed by mruby-specinfra Class#subclasses"

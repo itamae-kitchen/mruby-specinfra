@@ -96,10 +96,10 @@ class MRubySpecinfraBuilder
   def generate_class_ext
     classes = `find #{@lib.shellescape} -type f -exec grep "\\.subclasses" {} \\;`.each_line.map do |line|
       line.sub(/\A */, '').sub(/\.subclasses.*\n\z/, '')
-    end
+    end.sort
 
     subclasses = {}
-    classes.sort.each do |klass|
+    classes.each do |klass|
       subclasses[klass] = `find #{@lib.shellescape} -type f -exec grep "#{klass}" {} \\;`
         .scan(/#{klass}::[^:\n ]+/).sort.uniq
     end
