@@ -174,6 +174,7 @@ end
 # require 'specinfra/command/darwin/base/port'
 # require 'specinfra/command/darwin/base/process'
 # require 'specinfra/command/darwin/base/user'
+# require 'specinfra/command/darwin/base/group'
 
 # Debian (inherit Linux)
 # require 'specinfra/command/debian'

@@ -5,7 +5,7 @@ require 'shellwords'
 require 'tmpdir'
 
 SPECINFRA_REPO    = 'mizzy/specinfra'
-SPECINFRA_VERSION = 'v2.82.8'
+SPECINFRA_VERSION = 'v2.82.9'
 
 module GitHubFetcher
   def self.fetch(repo, tag:, path:)
