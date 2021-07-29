@@ -27,4 +27,4 @@ jobs:
           make -C mruby all
       - name: test
         run: |
-          make test
+          make -C mruby test
