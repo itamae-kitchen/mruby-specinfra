@@ -1,0 +1,30 @@
+name: test
+on:
+  push:
+  pull_request:
+
+jobs:
+  test:
+    name: test
+    runs-on: ubuntu-latest
+    env:
+      MRUBY_CONFIG: ${{ github.workspace }}/mruby-specinfra/.github/build_config.rb
+    steps:
+      - name: checkout mruby-specinfra
+        uses: actions/checkout@v2
+        with:
+          path: mruby-specinfra
+
+      # setup mruby
+      - name: checkout mruby
+        uses: actions/checkout@v2
+        with:
+          repository: 'mruby/mruby'
+          path: mruby
+
+      - name: build
+        run: |
+          make -C mruby all
+      - name: test
+        run: |
+          make -C mruby test
