@@ -15,6 +15,11 @@ jobs:
         with:
           path: mruby-specinfra
 
+      - name: check specinfra sync
+        run: |
+          ruby mruby-specinfra/update_specinfra.rb
+          git -C mruby-specinfra diff --exit-code
+
       # setup mruby
       - name: checkout mruby
         uses: actions/checkout@v2
