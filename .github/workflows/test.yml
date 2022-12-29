@@ -11,7 +11,7 @@ jobs:
       MRUBY_CONFIG: ${{ github.workspace }}/mruby-specinfra/.github/build_config.rb
     steps:
       - name: checkout mruby-specinfra
-        uses: actions/checkout@v2
+        uses: actions/checkout@v3
         with:
           path: mruby-specinfra
 
@@ -22,7 +22,7 @@ jobs:
 
       # setup mruby
       - name: checkout mruby
-        uses: actions/checkout@v2
+        uses: actions/checkout@v3
         with:
           repository: 'mruby/mruby'
           path: mruby
