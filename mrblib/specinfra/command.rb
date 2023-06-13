@@ -223,17 +223,30 @@ end
 # require 'specinfra/command/elementary'
 # require 'specinfra/command/elementary/base'
 
+# Neon (inherit Ubuntu)
+# require 'specinfra/command/neon'
+# require 'specinfra/command/neon/base'
+
 # Cumulus Networks (inherit Debian)
 # require 'specinfra/command/cumulus'
 # require 'specinfra/command/cumulus/base'
 # require 'specinfra/command/cumulus/base/ppa'
 # require 'specinfra/command/cumulus/base/service'
 
+# VyOS (inherit Debian)
+# require 'specinfra/command/vyos'
+# require 'specinfra/command/vyos/base'
+
 # Gentoo (inherit Linux)
 # require 'specinfra/command/gentoo'
 # require 'specinfra/command/gentoo/base'
 # require 'specinfra/command/gentoo/base/package'
 # require 'specinfra/command/gentoo/base/service'
+
+# Guix (inherit Linux)
+# require 'specinfra/command/guix'
+# require 'specinfra/command/guix/base'
+# require 'specinfra/command/guix/base/service'
 
 # Plamo (inherit Linux)
 # require 'specinfra/command/plamo'

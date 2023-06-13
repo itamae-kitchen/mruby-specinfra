@@ -65,6 +65,7 @@ class Class
         Specinfra::Helper::DetectOs::Esxi,
         Specinfra::Helper::DetectOs::Freebsd,
         Specinfra::Helper::DetectOs::Gentoo,
+        Specinfra::Helper::DetectOs::Guix,
         Specinfra::Helper::DetectOs::Nixos,
         Specinfra::Helper::DetectOs::Openbsd,
         Specinfra::Helper::DetectOs::Photon,
