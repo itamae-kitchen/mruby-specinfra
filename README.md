@@ -1,4 +1,4 @@
-# mruby-specinfra [![Build Status](https://travis-ci.org/itamae-kitchen/mruby-specinfra.svg?branch=master)](https://travis-ci.org/itamae-kitchen/mruby-specinfra)
+# mruby-specinfra [![test](https://github.com/itamae-kitchen/mruby-specinfra/actions/workflows/test.yml/badge.svg)](https://github.com/itamae-kitchen/mruby-specinfra/actions/workflows/test.yml)
 
 [Specinfra](https://github.com/mizzy/specinfra) for mruby.
 
