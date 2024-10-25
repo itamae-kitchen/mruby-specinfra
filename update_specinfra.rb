@@ -8,7 +8,7 @@ require 'tmpdir'
 #   1. Update SPECINFRA_VERSION
 #   2. Run ./update_specinfra.rb
 SPECINFRA_REPO    = 'mizzy/specinfra'
-SPECINFRA_VERSION = 'v2.87.0'
+SPECINFRA_VERSION = 'v2.91.0'
 
 module GitHubFetcher
   def self.fetch(repo, tag:, path:)

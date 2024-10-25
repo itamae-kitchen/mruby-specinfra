@@ -40,3 +40,4 @@ end
 # require 'specinfra/helper/detect_os/redhat'
 # require 'specinfra/helper/detect_os/solaris'
 # require 'specinfra/helper/detect_os/suse'
+# require 'specinfra/helper/detect_os/voidlinux'
