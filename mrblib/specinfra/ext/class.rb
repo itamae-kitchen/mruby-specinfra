@@ -74,6 +74,7 @@ class Class
         Specinfra::Helper::DetectOs::Redhat,
         Specinfra::Helper::DetectOs::Solaris,
         Specinfra::Helper::DetectOs::Suse,
+        Specinfra::Helper::DetectOs::Voidlinux,
       ]
     else
       raise "#{self} is not supposed by mruby-specinfra Class#subclasses"
